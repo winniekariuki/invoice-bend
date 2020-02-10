@@ -1,0 +1,4 @@
+export DB_NAME="csv-parser"
+export DB_USER="hesbon"
+export DB_HOST="localhost"
+export DB_PASSWORD="password"
