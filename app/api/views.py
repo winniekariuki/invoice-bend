@@ -75,6 +75,15 @@ class MonthlyTotalAPIView(generics.ListAPIView):
 
             except:
                 data.update(obj)
+        month_defaults = ['January', 'February', 'March', 'April', 'May', 'June',
+                          'July', 'August', 'September', 'October', 'November', 'December']
+        for year in data:
+            months = ([*data[year]])
+
+            unavailable = [m for m in month_defaults if m not in months]
+
+            for each in unavailable:
+                data[year].update({each: 0})
         return Response(data, status=status.HTTP_200_OK)
 
 
@@ -142,6 +151,17 @@ class InvoiceAPIView(generics.ListAPIView):
         date = request.query_params['date']
         date = format_date(date)
         next_date = date + datetime.timedelta(30)
-        data = CSVParser.objects.filter(invoice_date__range=[date, next_date])
-        serializer = self.serializer_class(data, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        instance = CSVParser.objects.filter(invoice_date__range=[date, next_date]).only(
+            "invoice_date", "quantity", "unit_amount")
+        data = []
+        for each in instance:
+            total = each.unit_amount * each.quantity
+
+            obj = {"total": total, "invoice_date": each.invoice_date}
+            if data:
+                for i, item in enumerate(data):
+                    if item['invoice_date'] == obj['invoice_date']:
+                        obj["total"] += item['total']
+                        data[i] = obj
+            data.append(obj)
+        return Response(data, status=status.HTTP_200_OK)
