@@ -30,9 +30,9 @@ _Router used_'api/v1/invoice' GET METHOD</p>
 <div><h2>Installation</h2>
   <ol>
      <li>Open a repo in github</li>
-     <li>Clone the repository into the local machine through the terminal by: git clone https://github.com/winniekariuki/Mystore-manager.git</li>
+     <li>Clone the repository into the local machine through the terminal by: git clone https://github.com/winniekariuki/invoice-bend.git</li>
      <li>Create a virtual enviroment with the command $ virtualenv -p python3 env</li>
-     <li>Activate the virtual enviroment with the command `Desktop/MysCSV-parser/env/Scripts/activate`</li>
+     <li>Activate the virtual enviroment with the command `Desktop/Invoice-bend/env/Scripts/activate`</li>
     <li>cd back into the Challeng3 where you include all your code related files.</li>
     <li>Install requirements $ pip install -r requirements.txt</li>
   </ol>
