@@ -1,4 +1,4 @@
-# CSV-PARSER
+# invoice-bend
 
 The application is meant to analyse data from csv file that is uploaded to give meaningful information on various business activities.
 
@@ -12,7 +12,7 @@ _Router_ used 'api/v1/upload' POST METHOD.</p>
 _Router used_'api/v1/monthly-total' GET METHOD.</p>
 
 <h2>Get top five customers endpoint</h2>
-<p>Returns he Top Five customers according Total amount (quantity * 
+<p>Returns the Top Five customers according Total amount (quantity * 
 unitAmount) due for a given year </p>
 _Router used_'api/v1/top-customers-amount' GET METHOD</p>
 
